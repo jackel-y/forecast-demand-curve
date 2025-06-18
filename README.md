@@ -10,8 +10,8 @@ The project addresses the critical need for accurate demand forecasting in the a
 
 * **Data Preprocessing and Feature Engineering:**
     * Creation of essential time-based features (e.g., day of week, day of year, month, year, quarter, etc.) from `Date`.
-    * One-hot encoding for `Origin_Destination` pairs to capture route-specific demand patterns.
-    * Generation of crucial **lagged `corrected_seats_sold` features** (e.g., 1, 2, and 7 days prior) to incorporate historical sales momentum into predictions.
+    * One-hot encoding to capture route-specific demand patterns.
+    * Generation of crucial **lagged `corrected_sales` features** (e.g., 1, 2, and 7 days prior) to incorporate historical sales momentum into predictions.
 * **Sequential Forecasting Logic:** Implements a specialized prediction loop that iterates backward from the furthest point in the booking window (341 days out) down to the departure day. This allows the model to leverage previously observed actual sales or prior day's predictions as input for future predictions, simulating a real-world forecasting scenario.
 * **XGBoost Model Training & Evaluation:**
     * Utilizes the powerful XGBoost Regressor for its ability to handle complex, non-linear relationships and interactions within the data.
@@ -32,12 +32,10 @@ FORECAST-DEMAND-CURVE/
 ├── notebooks/                  # Jupyter notebooks for experimentation and analysis
 │   ├── discovery.ipynb         # Initial data exploration or model discovery
 │   ├── execute.ipynb           # Main execution notebook (likely contains the full prediction pipeline)
-│   └── store-sales-ts-forecasting-a-comprehen... # Another notebook, possibly for in-depth time series analysis
 ├── src/                        # Source code for modular functions
 │   ├── pycache/            # Python bytecode cache
 │   ├── trained_models/         # Directory to store trained models
 │   │   └── xgb_model_joblib.pkl  # Example of a saved XGBoost model
-│   ├── xgb_models.py           # Module for XGBoost model definition, training, saving/loading
 │   └── nodes.py                # Contains core functions like feature_engineering and prediction logic
 ├── .gitignore                  # Specifies intentionally untracked files to ignore
 ├── README.md                   # This README file
@@ -58,16 +56,9 @@ Follow these instructions to set up the project and run the forecasting system.
 
 
 git clone [https://github.com/jackel-y/FORECAST-DEMAND-CURVE.git](https://github.com/jackel-y/FORECAST-DEMAND-CURVE.git)
-cd FORECAST-DEMAND-CURVE
 
 ### 2. Set up the Virtual Environment
 It's highly recommended to use a virtual environment to manage project dependencies.
-
-
-python3 -m venv .venv
-source .venv/bin/activate  # On macOS/Linux
-.venv\Scripts\activate    # On Windows
-If you encounter a prompt to "Choose an option to handle the existing '.venv' environment", select "Use Existing" to proceed without changes.
 
 ### 3. Install Dependencies
 Install the required Python packages:
