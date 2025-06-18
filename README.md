@@ -4,7 +4,7 @@
 
 This repository hosts a robust Flight Sales Forecasting System designed to predict daily seat sales for flights across their entire booking window (from 341 days before departure down to the day of departure). The system prioritizes the use of actual observed sales data when available and dynamically generates predictions for unobserved days using a trained XGBoost model.
 
-The project addresses the critical need for accurate demand forecasting in the airline industry, enabling better capacity planning, pricing strategies, and revenue management.
+The project addresses the critical need for accurate demand forecasting, enabling better capacity planning, pricing strategies, and revenue management.
 
 ## Key Features
 
